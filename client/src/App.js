@@ -9,6 +9,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import NotFound from './components/NotFound';
 
 function App() {
+    const [isAuthenicated, setIsAutheticated] = useState(false);
 
     return (
         <div className='App'>
