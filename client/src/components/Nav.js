@@ -12,7 +12,7 @@ function Nav() {
     return (
         <nav>
             <Link className='logo' to={'/'}>
-                <h3>BBY</h3>
+                <h3>B-BY</h3>
             </Link>
             <ul className='nav-links'>
                 <Link style={navStyle} to={'/'}>
@@ -26,7 +26,7 @@ function Nav() {
                 </Link>
                 <Link style={navStyle} to={'/login'}>
                     <li>Login</li>
-                </Link>
+                </Link>    
                 
             </ul>
         </nav>
