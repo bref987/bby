@@ -13,7 +13,7 @@ function App() {
         try {
           const res = await fetch("http://localhost:5000/authentication/verify", {
             method: "POST",
-            headers: { jwt_token: localStorage.token }
+            headers: { jwtToken: localStorage.jwtToken }
           });
     
           const parseRes = await res.json();
@@ -41,7 +41,7 @@ function App() {
                     <Nav/>
                     <Routes>
                         <Route path='/' exact element={<Home />} />
-                        <Route path='/program' element={ isAuthenticated ? <Program /> : <Navigate to='/login' />} />
+                        <Route path='/program' element={ isAuthenticated ? <Program setAuth={setAuth}/> : <Navigate to='/login' />} />
                         <Route path='/register' element={ isAuthenticated ? <Navigate to='/program' /> : <Register setAuth={setAuth}/>} />
                         <Route path='/login' element={ isAuthenticated ? <Navigate to='/program' /> : <Login setAuth={setAuth}/>} />
                         <Route path='*' element={<NotFound/>} />
