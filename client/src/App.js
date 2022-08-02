@@ -5,11 +5,34 @@ import Home from './components/Home';
 import Login from './components/Login';
 import Register from './components/Register';
 import Program from './components/Program';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import NotFound from './components/NotFound';
 
 function App() {
-    const [isAuthenicated, setIsAutheticated] = useState(false);
+    const checkAuthenticated = async () => {
+        try {
+          const res = await fetch("http://localhost:5000/authentication/verify", {
+            method: "POST",
+            headers: { jwt_token: localStorage.token }
+          });
+    
+          const parseRes = await res.json();
+    
+          parseRes === true ? setIsAuthenticated(true) : setIsAuthenticated(false);
+        } catch (err) {
+          console.error(err.message);
+        }
+      };
+    
+      useEffect(() => {
+        checkAuthenticated();
+      }, []);
+    
+      const [isAuthenticated, setIsAuthenticated] = useState(false);
+    
+      const setAuth = boolean => {
+        setIsAuthenticated(boolean);
+      };
 
     return (
         <div className='App'>
@@ -17,10 +40,10 @@ function App() {
                 <div className='container'>
                     <Nav/>
                     <Routes>
-                        <Route path='/' exact element={<Home/>} />
-                        <Route path='/program' element={<Program/>} />
-                        <Route path='/register' element={<Register/>} />
-                        <Route path='/login' element={<Login/>} />
+                        <Route path='/' exact element={<Home />} />
+                        <Route path='/program' element={ isAuthenticated ? <Program /> : <Navigate to='/login' />} />
+                        <Route path='/register' element={ isAuthenticated ? <Navigate to='/program' /> : <Register setAuth={setAuth}/>} />
+                        <Route path='/login' element={ isAuthenticated ? <Navigate to='/program' /> : <Login setAuth={setAuth}/>} />
                         <Route path='*' element={<NotFound/>} />
                     </Routes>
                 </div>

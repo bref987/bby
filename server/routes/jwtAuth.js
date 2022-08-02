@@ -59,7 +59,7 @@ router.post('/login', async (req, res) => {
   }
 });
 
-router.get('/verify', authorize, (req, res) => {
+router.post('/verify', authorize, (req, res) => {
     try {
         res.json(true);
     } catch (err) {

@@ -44,7 +44,7 @@ function Register({ setAuth }) {
                 <input
                 type='text'
                 name='name'
-                value={name}
+                value={name || ''}
                 placeholder='name'
                 onChange={e => onChange(e)}
                 className='form-control my-3'
@@ -52,7 +52,7 @@ function Register({ setAuth }) {
                 <input
                 type='text'
                 name='email'
-                value={email}
+                value={email || ''}
                 placeholder='email'
                 onChange={e => onChange(e)}
                 className='form-control my-3'
@@ -60,7 +60,7 @@ function Register({ setAuth }) {
                 <input
                 type='password'
                 name='password'
-                value={password}
+                value={password || ''}
                 placeholder='password'
                 onChange={e => onChange(e)}
                 className='form-control my-3'

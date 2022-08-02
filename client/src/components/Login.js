@@ -46,7 +46,7 @@ const Login = ({ setAuth }) => {
             <input
             type='text'
             name='name'
-            value={name}
+            value={name || ''}
             placeholder='name'
             onChange={e => onChange(e)}
             className='form-control my-3'
@@ -54,7 +54,7 @@ const Login = ({ setAuth }) => {
             <input 
             type='password'
             name='password'
-            value={password}
+            value={password || ''}
             placeholder='password'
             onChange={e => onChange(e)}
             className='form-control my-3'
