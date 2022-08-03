@@ -1,15 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 
-//components
-
-function Home () {
-  
+function Home() {
   return (
-    <div>
-      <div className="d-flex mt-5 justify-content-around">
-        <h2> Home page </h2>
-      </div>
-
+    <div className="jumbotron mt-5">
+      <h2>Welcome to B-BY Sport app</h2>
     </div>
   );
 };

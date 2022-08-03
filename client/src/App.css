@@ -10,6 +10,14 @@ nav {
   background: rgb(255, 255, 0);
 }
 
+.program {
+  width: 30%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  list-style: none;
+}
+
 .nav-links {
   width: 50%;
   display: flex;

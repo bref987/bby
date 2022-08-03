@@ -105,13 +105,23 @@ router.get('/program', authorize, async(req, res) => {
 router.get('/program/:pid', authorize, async(req, res) => {
     try {
         const {pid} = req.params;
-        const programs = await pool.query('select programm from exercises where exerciseId = $1', [pid]);
+        const programs = await pool.query('select * from get_programm($1, $2)', [req.user.id, pid]);
 
         res.json(programs.rows);
     } catch (err) {
         console.log(err.message);
         res.status(500).send('Server error');
     }
+
+    // try {
+    //     const {pid} = req.params;
+    //     const programs = await pool.query('select programm from exercises where exerciseId = $1', [pid]);
+
+    //     res.json(programs.rows);
+    // } catch (err) {
+    //     console.log(err.message);
+    //     res.status(500).send('Server error');
+    // }
 })
 
 // router.delete('/deltraining/:id', authorize, async (req, res) => {
