@@ -31,10 +31,20 @@ function App() {
     }, []);
     
     const [isAuthenticated, setIsAuthenticated] = useState(false);
+    const [isEnded, setIsEnded] = useState(false);
     
     const setAuth = boolean => {
         setIsAuthenticated(boolean);
     };
+
+    const setTrainingEnd = boolean => {
+        console.log(isEnded, '++++++');
+        setIsEnded(boolean);
+    }
+
+    useEffect(() => {
+        setTrainingEnd();
+    })
 
     return (
         <div className='App'>
@@ -44,7 +54,7 @@ function App() {
                     <Routes>
                         <Route path='/' exact element={isAuthenticated ? <Home /> : <Landing />} />
                         <Route path='/program' exact element={isAuthenticated ? <Program setAuth={setAuth} /> : <Navigate to='/login' />} />
-                        <Route path='/program/:id' element={isAuthenticated ? <Training setAuth={setAuth}/> : <Landing /> } />
+                        <Route path='/program/:id' element={isEnded ? <Navigate to='/program'/> : <Training setTrainingEnd={setTrainingEnd} /> } />
                         <Route path='/register' exact element={isAuthenticated ? <Navigate to='/program' /> : <Register setAuth={setAuth} /> } />
                         <Route path='/login' exact element={isAuthenticated ? <Navigate to='/program' /> :  <Login setAuth={setAuth}/> } />
                         <Route path='*' element={<NotFound/>} />
