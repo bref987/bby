@@ -21,16 +21,6 @@ function Program ({ setAuth }) {
         }
     }
 
-    const logout = async e => {
-        e.preventDefault();
-        try {
-            localStorage.removeItem("jwtToken");
-            setAuth(false);
-        } catch (err) {
-            console.error(err.message);
-        }
-    };
-
     useEffect(() => {
         getExercises();
     }, []);
@@ -45,7 +35,6 @@ function Program ({ setAuth }) {
                 </Link>
             </h3>
         ))}
-        <button onClick={e => logout(e)} className="mt-5 btn btn-primary">Logout</button>
       </div>
     </div>
   );

@@ -2,7 +2,6 @@ import React from "react";
 
 function CurrentProgram({isStarted, training, exercise}) {
   return (
-
     <div className="mt-5 justify-content-around display-flex">
         <ul className='program'>
             {exercise.map((exer, index) => (
@@ -15,7 +14,6 @@ function CurrentProgram({isStarted, training, exercise}) {
         <h1>{isStarted && training}</h1>
                 
     </div>
-
   );
 };
 

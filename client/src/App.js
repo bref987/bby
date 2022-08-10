@@ -9,6 +9,7 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import NotFound from './components/NotFound';
 import Landing from './components/Landing';
 import Training from './components/Training';
+import Logout from './components/Logout';
 
 function App() {
     const checkAuthenticated = async () => {
@@ -38,7 +39,6 @@ function App() {
     };
 
     const setTrainingEnd = boolean => {
-        console.log(isEnded, '++++++');
         setIsEnded(boolean);
     }
 
@@ -49,14 +49,17 @@ function App() {
     return (
         <div className='App'>
             <BrowserRouter>
-                <div className='container'>
+                <div className='App'>
                     <Nav/>
                     <Routes>
                         <Route path='/' exact element={isAuthenticated ? <Home /> : <Landing />} />
-                        <Route path='/program' exact element={isAuthenticated ? <Program setAuth={setAuth} /> : <Navigate to='/login' />} />
-                        <Route path='/program/:id' element={isEnded ? <Navigate to='/program'/> : <Training setTrainingEnd={setTrainingEnd} /> } />
+                        <Route path='/program' exact element={isAuthenticated ? <Program setAuth={setAuth} /> : <Landing />} />
+                        <Route path='/program/:id' element={
+                            isEnded && isAuthenticated ? <Navigate to='/program'/> : 
+                            !isAuthenticated ?  <Landing /> : <Training setTrainingEnd={setTrainingEnd} />
+                        } />
                         <Route path='/register' exact element={isAuthenticated ? <Navigate to='/program' /> : <Register setAuth={setAuth} /> } />
-                        <Route path='/login' exact element={isAuthenticated ? <Navigate to='/program' /> :  <Login setAuth={setAuth}/> } />
+                        <Route path='/login' exact element={isAuthenticated ? <Logout setAuth={setAuth}/> : <Login setAuth={setAuth}/> } />
                         <Route path='*' element={<NotFound/>} />
                     </Routes>
                 </div>
