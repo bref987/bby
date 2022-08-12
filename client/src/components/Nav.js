@@ -9,7 +9,6 @@ function Nav({ setAuth }) {
         textDecoration: 'none'
     }
 
-    
     return (
         <nav>
             <Link className='logo' to={'/'}>

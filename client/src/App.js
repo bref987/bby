@@ -62,6 +62,7 @@ function App() {
                         <Route path='/login' exact element={isAuthenticated ? <Logout setAuth={setAuth}/> : <Login setAuth={setAuth}/> } />
                         <Route path='*' element={<NotFound/>} />
                     </Routes>
+                    <footer>BYsport</footer>
                 </div>
             </BrowserRouter>
         </div>

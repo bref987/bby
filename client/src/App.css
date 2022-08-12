@@ -1,29 +1,40 @@
 .App {
-  text-align: center;
+    text-align: center;
+    background-color: white;
 }
 
 nav {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  min-height: 10vh;
-  background: rgb(255, 255, 0);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    min-height: 10vh;
+    background: rgb(255, 255, 0);
+}
+
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: rgb(255, 255, 0);
+    color: black;
+    text-align: center;
 }
 
 .program {
-  width: 30%;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  list-style: none;
+    width: 50%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    list-style: none;
 }
 
 .nav-links {
-  width: 50%;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  list-style: none;
+    width: 50%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    list-style: none;
 }
 
 .logo {
@@ -34,64 +45,204 @@ nav {
 }
 
 .container {
-  display: grid;
-  height: 80vh;
-  grid-template-columns: 1fr 0.2fr 1fr;
-  grid-template-rows: 0.2fr 1fr 1fr 1fr;
-  grid-template-areas: 
-    "plist plist plist"
-    "ref plus actual"
-    "ref but actual"
-    "ref minus actual";
-  grid-gap: 0.2rem;
+    display: grid;
+    height: 100vh;
+    grid-template-columns: 1fr 0.2fr 1fr;
+    grid-template-rows: 0.2fr 1fr 1fr 1fr 0.3fr;
+    grid-template-areas: 
+        "plist . ."
+        "ref plus actual"
+        "ref but actual"
+        "ref minus actual"
+        "mes1 mes2 mes3";
+    grid-gap: 0.2rem;
+    background: beige;
+ 
+}
+
+.list {
+    display: grid;
+    /* align-items: baseline; */
+    justify-content: stretch;
+    margin-top: 15px;
+}
+
+img {
+    width: 80%;
+    height: auto;
 }
 
 #plist {
-  background: white;
-  grid-area: plist;
+    background: white;
+    grid-area: plist;
+    background: beige;
 }
 
 #ref {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 15em;
-  background: lightgray;
-  grid-area: ref;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15em;
+    background: lightgray;
+    grid-area: ref;
 }
 
 #actual {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 15em;
-  background: lightgray;
-  grid-area: actual;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15em;
+    background: lightgray;
+    grid-area: actual;
 }
 
 #plus {
-  background: white;
-  grid-area: plus;
+    display: grid;
+    align-items: center;
+    justify-content:center;
+    grid-area: plus;
+    background: beige;
+    margin-bottom: 20px;
 }
 
 #but {
-  background: white;
-  grid-area: but;
+    display: grid;
+    align-items: center;
+    justify-content:center;
+    grid-area: but;
+    background: beige;
+    margin-bottom: 20px;
 }
 
 #minus {
-  background: white;
-  grid-area: minus;
+    display: grid;
+    align-items: center;
+    justify-content:center;
+    grid-area: minus;
+    background: beige;
+    margin-bottom: 20px;
 }
 
-/* @media only screen and (max-width:480px) {
-  .container{
-      grid-template-columns: 1fr 1fr 1fr;
-      grid-template-rows: 0.5fr 1fr 1fr 1fr;
-      grid-template-areas: 
-      "plist plist plist"
-      "ref ref ref"
-      "plus but minus"
-      "actual actual actual"
-  }
+.rond {
+    border-radius:50%;
+    width:3rem;
+    height:3rem;
+    background: linear-gradient(#F16529, #E44D26);
+    box-shadow: 0px 3px 8px #aaa, inset 0px 2px 3px #fff;
+    border:none;
+    outline:none;
+    font: 18px Tahoma bold;
+    color: #ffffff;
+    text-shadow: 1px 1px 1px lighgrey;
+    text-align: center;
+    }
+
+.rectangle {
+    /* border-radius:50%; */
+    width:5rem;
+    height:3rem;
+    background: linear-gradient(#F16529, #E44D26);
+    box-shadow: 0px 3px 8px #aaa, inset 0px 2px 3px #fff;
+    border:none;
+    outline:none;
+    font: 18px Tahoma bold;
+    color: #ffffff;
+    text-shadow: 1px 1px 1px lighgrey;
+    text-align: center;
+    }
+
+#mes1 {
+    grid-area: mes1;
+}
+
+#mes2 {
+    grid-area: mes2;
+}
+
+#mes3 {
+    grid-area: mes3;
+}
+
+/* button {
+    background-color: #2d18e6; 
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1rem;
 } */
+
+.exerciseList {
+    inline-size: 5rem;
+    font-size: 1.75em;
+    font-weight: bold;
+}
+
+.activeItem {
+    background: yellow;
+    /* color: red; */
+}
+
+@media only screen and (max-width:480px) {
+    .nav-links {
+        /* width: 50%; */
+        display: grid;
+        /* justify-content: space-around; */
+        text-align: left;
+        align-items: center;
+        justify-content: end;
+        list-style: none;
+    }
+
+    .container{
+        display: grid;
+        height: 100vh; 
+        grid-template-columns: 1fr 0.25fr 1fr;
+        grid-template-rows: 0.25fr 1fr 0.37fr;
+        grid-template-areas: 
+            "plist plist plist"
+            "actual actual actual"
+            "minus but plus";
+
+        grid-gap: 0.2rem;
+        background: beige;
+    }
+
+    #ref {
+        display: none;
+        font-size: 5em;
+        background: silver;
+        grid-area: ref;
+    }
+  
+    #actual {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 10em;
+        background: silver;
+        grid-area: actual;
+    }
+
+    #mes1 {
+        display: none;
+        grid-area: mes1;
+    }
+    
+    #mes2 {
+        display: none;
+        grid-area: mes2;
+    }
+    
+    #mes3 {
+        display: none;
+        grid-area: mes3;
+    }
+
+    img {
+        width: 80%;
+        height: auto;
+    }
+}

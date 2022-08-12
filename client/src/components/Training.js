@@ -92,52 +92,60 @@ function Training ({ setTrainingEnd }) {
 
     return (
         <div className="container">
-            <div id="plist" className="mt-5 justify-content-around display-flex">
+            <div id="plist" className="list">
                 <ul className='program'>
                     {exercise.map((exer, index) => (
-                        <li key={index} className='border border-secondary me-2'> 
-                        
-                        <h1>{exer}</h1>
-                        
+                        <li id={`prog${index}`} key={index} className='border border-secondary me-2'> 
+                            <span className="exerciseList">
+                                {exer}
+                            </span>
                         </li>
                     ))}
                 </ul>  
             </div>
 
+            {isStarted && document.getElementById(`prog${exerciseRef - 1}`).classList.add('activeItem')}
+
             <div id="ref">
-                {!isFinished && <p>{isStarted && training}</p>}
+                {!isFinished ? <span>{isStarted && training}</span> : <img src="./../muscleLeft.png" />}
             </div>
 
             <div id="actual">
-                {isStarted && !isFinished && <p>{isStarted && count}</p>}
+                {!isFinished ? <span>{isStarted && count}</span> : <img src="./../muscleRight.png" />}
             </div>
 
             <div id="but">
-                <button onClick={!isFinished ? getTraining : sumbitTraining} className="mt-5 btn btn-primary">
+                <button class='rectangle' onClick={!isFinished ? getTraining : sumbitTraining} >
                     {!isStarted ? 'Start' : isFinished ? 'Finish': 'Next'}
                 </button>
             </div>
 
             <div id="minus">
-                {isStarted && !isFinished && <button onClick={() => decrementCount()} className="mt-5 btn btn-primary">-</button>}
+                {isStarted && !isFinished && <button class='rond' onClick={decrementCount} >-</button>}
             </div>
 
             <div id="plus">
-                {isStarted && !isFinished && <button onClick={() => incrementCount()} className="mt-5 btn btn-primary">+</button>}
+                {isStarted && !isFinished && <button class='rond' onClick={incrementCount} >+</button>}
             </div>
 
-            {/* {!isFinished && <CurrentProgram 
-                isStarted={isStarted}
-                getTraining={getTraining} 
-                training={training} 
-                exercise={exercise} />} */}
-            
-            {/* {isStarted && !isFinished && <Counter 
-                decrementCount={decrementCount} 
-                incrementCount={incrementCount}
-                sumbitTraining={sumbitTraining} 
-                count={count} 
-                isStarted={isStarted} />} */}
+            <div id='mes1'>
+                <span>
+                    {/* to be done */}
+                </span>
+            </div>
+
+            <div id='mes2'>
+                <h2>
+                    {/* → */}
+                </h2>
+            </div>
+
+            <div id='mes3'>
+                <span>
+                   {/* done */}
+                </span>
+            </div>
+
         </div>
     );
 };
