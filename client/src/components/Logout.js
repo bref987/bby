@@ -32,13 +32,13 @@ function Logout({ setAuth }) {
     }, []);
 
     return (
-        <div className="mt-5 justify-content-around">
-            <h1>{name}</h1>
-
-            <button onClick={e => logout(e)} className="mt-5 btn btn-primary">Logout</button>
-
+        <div className='containerInput'>
+            <div id='inputLogin'>
+                <h1>{name}</h1>
+                <button className='rectangle' onClick={e => logout(e)}>Logout</button>
+            </div>
         </div>
-  );
+    );
 };
 
 export default Logout;

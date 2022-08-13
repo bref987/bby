@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useParams, Link } from 'react-router-dom';
-import Counter from "./Counter";
-import CurrentProgram from "./CurrentProgram";
 
 
 function Training ({ setTrainingEnd }) {
@@ -91,7 +89,7 @@ function Training ({ setTrainingEnd }) {
     }, []); 
 
     return (
-        <div className="container">
+        <div className="containerTraining">
             <div id="plist" className="list">
                 <ul className='program'>
                     {exercise.map((exer, index) => (
@@ -105,6 +103,14 @@ function Training ({ setTrainingEnd }) {
             </div>
 
             {isStarted && document.getElementById(`prog${exerciseRef - 1}`).classList.add('activeItem')}
+            
+            {isStarted && document.getElementById(`prog${exerciseRef < 2 ? exerciseRef : exerciseRef - 2}`).classList.remove('activeItem')}
+
+            {isFinished && document.getElementById(`prog${exerciseRef - 1}`).classList.remove('activeItem')}
+
+            {/* {isFinished && 
+                [...Array(exerciseRef)]
+                    .forEach((el, index) => document.getElementById(`prog${index}`).classList.add('activeItem'))} */}
 
             <div id="ref">
                 {!isFinished ? <span>{isStarted && training}</span> : <img src="./../muscleLeft.png" />}

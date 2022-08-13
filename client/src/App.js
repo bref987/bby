@@ -47,7 +47,7 @@ function App() {
     })
 
     return (
-        <div className='App'>
+        <div className='container'>
             <BrowserRouter>
                 <div className='App'>
                     <Nav/>
@@ -62,7 +62,7 @@ function App() {
                         <Route path='/login' exact element={isAuthenticated ? <Logout setAuth={setAuth}/> : <Login setAuth={setAuth}/> } />
                         <Route path='*' element={<NotFound/>} />
                     </Routes>
-                    <footer>BYsport</footer>
+                    {/* <footer id='footer'>BYsport</footer> */}
                 </div>
             </BrowserRouter>
         </div>

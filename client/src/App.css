@@ -11,16 +11,6 @@ nav {
     background: rgb(255, 255, 0);
 }
 
-footer {
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    background-color: rgb(255, 255, 0);
-    color: black;
-    text-align: center;
-}
-
 .program {
     width: 50%;
     display: flex;
@@ -44,7 +34,7 @@ footer {
     text-decoration: none
 }
 
-.container {
+.containerTraining {
     display: grid;
     height: 100vh;
     grid-template-columns: 1fr 0.2fr 1fr;
@@ -58,6 +48,23 @@ footer {
     grid-gap: 0.2rem;
     background: beige;
  
+}
+
+.containerInput {
+    display: grid;
+    height: 100vh;
+    
+    justify-content: center;
+    align-items: center;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    grid-template-areas: 
+        ". inputLogin .";
+    background: beige;
+}
+
+#inputLogin {
+    grid-area: inputLogin;
 }
 
 .list {
@@ -140,7 +147,7 @@ img {
 .rectangle {
     /* border-radius:50%; */
     width:5rem;
-    height:3rem;
+    height:2.5rem;
     background: linear-gradient(#F16529, #E44D26);
     box-shadow: 0px 3px 8px #aaa, inset 0px 2px 3px #fff;
     border:none;
@@ -163,26 +170,26 @@ img {
     grid-area: mes3;
 }
 
-/* button {
-    background-color: #2d18e6; 
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 1rem;
-} */
-
 .exerciseList {
-    inline-size: 5rem;
+    /* inline-size: 5rem; */
     font-size: 1.75em;
     font-weight: bold;
+    display: inline-block;
+    width: 3rem;
 }
 
 .activeItem {
     background: yellow;
     /* color: red; */
+}
+
+.positiveItem {
+    background: blue;
+    /* color: red; */
+}
+
+.negariveItem {
+    color: red;
 }
 
 @media only screen and (max-width:480px) {
@@ -196,7 +203,7 @@ img {
         list-style: none;
     }
 
-    .container{
+    .containerTraining{
         display: grid;
         height: 100vh; 
         grid-template-columns: 1fr 0.25fr 1fr;
@@ -207,6 +214,19 @@ img {
             "minus but plus";
 
         grid-gap: 0.2rem;
+        background: beige;
+    }
+
+    .containerInput {
+        display: grid;
+        height: 100vh;
+        
+        justify-content: center;
+        align-items: center;
+        grid-template-columns: 0.2fr 1fr 0.2fr;
+        grid-template-rows: 1fr;
+        grid-template-areas: 
+            ". inputLogin .";
         background: beige;
     }
 
@@ -221,7 +241,7 @@ img {
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 10em;
+        font-size: 8em;
         background: silver;
         grid-area: actual;
     }
@@ -244,5 +264,13 @@ img {
     img {
         width: 80%;
         height: auto;
+    }
+
+    .exerciseList {
+        /* inline-size: 5rem; */
+        font-size: 1.5em;
+        font-weight: bold;
+        display: inline-block;
+        width: 2rem;
     }
 }
