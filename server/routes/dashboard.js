@@ -19,7 +19,6 @@ router.get("/", authorize, async (req, res) => {
     }
 });
 
-//create a todo
 
 // router.post("/todos", authorize, async (req, res) => {
 //   try {
@@ -36,7 +35,6 @@ router.get("/", authorize, async (req, res) => {
 //   }
 // });
 
-// //update a todo
 
 // router.put("/todos/:id", authorize, async (req, res) => {
 //   try {
@@ -57,7 +55,6 @@ router.get("/", authorize, async (req, res) => {
 //   }
 // });
 
-// //delete a todo
 
 // router.delete("/todos/:id", authorize, async (req, res) => {
 //   try {
@@ -102,26 +99,44 @@ router.get('/program', authorize, async(req, res) => {
     }
 })
 
-router.get('/program/:pid', authorize, async(req, res) => {
+router.get('/statistics', authorize, async(req, res) => {
     try {
-        const {pid} = req.params;
-        const programs = await pool.query('select * from get_programm($1, $2)', [req.user.id, pid]);
+        const exercisesDay = 
+        await pool.query('select * from get_all_statistics($1)', [req.user.id]);
+
+        res.json(exercisesDay.rows);
+    
+    } catch (err) {
+        console.log(err.message);
+        res.status(500).send('Server error');
+    }
+})
+
+
+router.get('/program/:id', authorize, async(req, res) => {
+    try {
+        const {id} = req.params;
+        const programs = await pool.query('select * from get_programm($1, $2)', [req.user.id, id]);
 
         res.json(programs.rows);
     } catch (err) {
         console.log(err.message);
         res.status(500).send('Server error');
     }
+})
 
-    // try {
-    //     const {pid} = req.params;
-    //     const programs = await pool.query('select programm from exercises where exerciseId = $1', [pid]);
+router.get('/statistics/:id', authorize, async(req, res) => {
+    try {
+        const {id} = req.params;
+        const programs = await pool.query(
+            'select get_sum(session) as training, traindate as date from train where sportsman = $1 and exercise = $2 order by trainId asc', 
+            [req.user.id, id]);
 
-    //     res.json(programs.rows);
-    // } catch (err) {
-    //     console.log(err.message);
-    //     res.status(500).send('Server error');
-    // }
+        res.json(programs.rows);
+    } catch (err) {
+        console.log(err.message);
+        res.status(500).send('Server error');
+    }
 })
 
 // router.delete('/deltraining/:id', authorize, async (req, res) => {
@@ -145,19 +160,6 @@ router.get('/program/:pid', authorize, async(req, res) => {
 //         console.log(err.message);
 //     }
 // })
-
-
-// router.get('/allUsers', authorize, async(req, res) => {
-//     try{
-//         const allUsers = await pool.query('select * from users');
-
-//         res.json(allUsers.rows);
-
-//     } catch (err) {
-//         console.log(err.message);
-//     }
-// })
-
 
 
 module.exports = router;

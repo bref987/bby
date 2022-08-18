@@ -10,6 +10,8 @@ import NotFound from './components/NotFound';
 import Landing from './components/Landing';
 import Training from './components/Training';
 import Logout from './components/Logout';
+import Statistics from './components/Statistics';
+import LineChart from './components/LineChart';
 
 function App() {
     const checkAuthenticated = async () => {
@@ -55,9 +57,11 @@ function App() {
                         <Route path='/' exact element={isAuthenticated ? <Home /> : <Landing />} />
                         <Route path='/program' exact element={isAuthenticated ? <Program setAuth={setAuth} /> : <Landing />} />
                         <Route path='/program/:id' element={
-                            isEnded && isAuthenticated ? <Navigate to='/program'/> : 
+                            isEnded && isAuthenticated ? <Navigate to='/statistics' /> : 
                             !isAuthenticated ?  <Landing /> : <Training setTrainingEnd={setTrainingEnd} />
                         } />
+                        <Route path='/statistics' exact element={isAuthenticated ? <Statistics setAuth={setAuth} /> : <Landing />} />
+                        <Route path='/statistics/:id' exact element={isAuthenticated ? <LineChart setAuth={setAuth} /> : <Landing />} />
                         <Route path='/register' exact element={isAuthenticated ? <Navigate to='/program' /> : <Register setAuth={setAuth} /> } />
                         <Route path='/login' exact element={isAuthenticated ? <Logout setAuth={setAuth}/> : <Login setAuth={setAuth}/> } />
                         <Route path='*' element={<NotFound/>} />
