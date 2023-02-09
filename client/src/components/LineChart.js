@@ -25,9 +25,6 @@ function LineChart() {
     
             const parseData = await res.json();
 
-            // console.log(parseData.map(el => el.training));
-            // console.log(parseData.map(el => el.date));
-
             const data = {
                     labels: parseData.map(el => el.date.slice(0, 10)).slice(-14),
                     datasets: [{

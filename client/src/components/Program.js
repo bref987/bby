@@ -25,16 +25,16 @@ function Program() {
     }, []);
 
   return (
-    <div>
-      <div className="mt-5 justify-content-around">
+    <div className='containerProgramme'>
         {exercises.map(exercise => (
-            <h3 key={exercise.exerciseid}>
-                <Link to={`/program/${exercise.exerciseid}`}>
+            <Link to={`/program/${exercise.exerciseid}`}>
+                <div className="prImage" key={exercise.exerciseid}>
                     {exercise.name}
-                </Link>
-            </h3>
+                    {/* {<img src={`./../${exercise.exerciseid}.png`} />} */}
+                </div>
+                
+            </Link>
         ))}
-      </div>
     </div>
   );
 };

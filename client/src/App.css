@@ -40,7 +40,7 @@ nav {
     grid-template-columns: 1fr 0.2fr 1fr;
     grid-template-rows: 0.2fr 1fr 1fr 1fr 0.3fr;
     grid-template-areas: 
-        "plist . ."
+        "plist . level"
         "ref plus actual"
         "ref but actual"
         "ref minus actual"
@@ -48,6 +48,24 @@ nav {
     grid-gap: 0.2rem;
     background: beige;
  
+}
+
+#level {
+    grid-area: level;
+    background: beige;
+}
+
+.containerProgramme {
+    display: grid;
+    height: 100vh;
+    background-color: beige;
+}
+
+.prImage {
+    position: relative;
+    font-size: 750%;
+    text-decoration: beige;
+    color: black
 }
 
 .containerInput {
@@ -74,8 +92,6 @@ nav {
     grid-template-areas: 
         ". liName .";
     background: beige;
-
-
 }
 
 .liName {
@@ -122,7 +138,6 @@ img {
 }
 
 #plist {
-    background: white;
     grid-area: plist;
     background: beige;
 }
@@ -189,7 +204,7 @@ img {
 .rectangle {
     /* border-radius:50%; */
     width:5rem;
-    height:2.5rem;
+    height: 2.5rem;
     background: linear-gradient(#F16529, #E44D26);
     box-shadow: 0px 3px 8px #aaa, inset 0px 2px 3px #fff;
     border:none;
@@ -198,7 +213,7 @@ img {
     color: #ffffff;
     text-shadow: 1px 1px 1px lighgrey;
     text-align: center;
-    }
+}
 
 #mes1 {
     grid-area: mes1;
@@ -227,6 +242,7 @@ img {
 
 .line {
     display: grid;
+    padding-top: 50px;
     height: 100vh;
     background: beige;
 }
@@ -246,8 +262,9 @@ img {
         display: grid;
         height: 100vh; 
         grid-template-columns: 1fr 0.25fr 1fr;
-        grid-template-rows: 0.25fr 1fr 0.37fr;
+        grid-template-rows: 0.25fr 0.25fr 1fr 0.37fr;
         grid-template-areas: 
+            "level level level"
             "plist plist plist"
             "actual actual actual"
             "minus but plus";
@@ -266,6 +283,23 @@ img {
         grid-template-rows: 1fr;
         grid-template-areas: 
             ". inputLogin .";
+        background: beige;
+    }
+
+    #level {
+        display: grid;
+        justify-content: center;
+        align-items: center;
+        text-align: left;
+        grid-area: level;
+        background: beige;
+    }
+
+    #plist {
+        display: grid;
+        justify-content: center;
+        align-items: center;
+        grid-area: plist;
         background: beige;
     }
 

@@ -1,4 +1,5 @@
-# BBY Sport Application
+# BySport Application
 
 Client side
 
+npm run start

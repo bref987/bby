@@ -6,6 +6,8 @@ function Training ({ setTrainingEnd }) {
     const {id} = useParams();
 
     const [exercise, setExercise] = useState([]);
+    const [currentLevel, setCurrentLevel] = useState();
+    const [totalLevel, setTotalLevel] = useState();
     const [session, setSession] = useState([]);
     const [isStarted, setIsStarted] = useState(false);
     const [isFinished, setIsFinished] = useState(false);
@@ -55,8 +57,11 @@ function Training ({ setTrainingEnd }) {
             });
     
             const parseData = await res.json();
+            console.log(parseData);
     
-            setExercise(parseData[0].get_programm[0]);
+            setExercise(parseData[0].programme[0]);
+            setCurrentLevel(parseData[0].current_level);
+            setTotalLevel(parseData[0].total_levels);
         } catch (err) {
             console.error(err.message);
         }
@@ -91,6 +96,7 @@ function Training ({ setTrainingEnd }) {
     return (
         <div className="containerTraining">
             <div id="plist" className="list">
+                
                 <ul className='program'>
                     {exercise.map((exer, index) => (
                         <li id={`prog${index}`} key={index} className='border border-secondary me-2'> 
@@ -100,6 +106,11 @@ function Training ({ setTrainingEnd }) {
                         </li>
                     ))}
                 </ul>  
+                
+            </div>
+
+            <div id='level' className='list'>
+                <h4>Level {currentLevel} from {totalLevel}</h4>
             </div>
 
             {isStarted && document.getElementById(`prog${exerciseRef - 1}`).classList.add('activeItem')}
@@ -121,7 +132,7 @@ function Training ({ setTrainingEnd }) {
             </div>
 
             <div id="but">
-                <button class='rectangle' onClick={!isFinished ? getTraining : sumbitTraining} >
+                <button className='rectangle' onClick={!isFinished ? getTraining : sumbitTraining} >
                     {!isStarted ? 'Start' : isFinished ? 'Finish': 'Next'}
                 </button>
             </div>
