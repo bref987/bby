@@ -1,21 +1,30 @@
 .App {
-  text-align: center;
+    text-align: center;
+    background-color: white;
 }
 
 nav {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  min-height: 10vh;
-  background: rgb(255, 255, 0);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    min-height: 10vh;
+    background: rgb(255, 255, 0);
+}
+
+.program {
+    width: 50%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    list-style: none;
 }
 
 .nav-links {
-  width: 50%;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  list-style: none;
+    width: 50%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    list-style: none;
 }
 
 .logo {
@@ -23,4 +32,329 @@ nav {
     font-size: 25px;
     color: black;
     text-decoration: none
+}
+
+.containerTraining {
+    display: grid;
+    height: 100vh;
+    grid-template-columns: 1fr 0.2fr 1fr;
+    grid-template-rows: 0.2fr 1fr 1fr 1fr 0.3fr;
+    grid-template-areas: 
+        "plist . level"
+        "ref plus actual"
+        "ref but actual"
+        "ref minus actual"
+        "mes1 mes2 mes3";
+    grid-gap: 0.2rem;
+    background: beige;
+ 
+}
+
+#level {
+    grid-area: level;
+    background: beige;
+}
+
+.containerProgramme {
+    display: grid;
+    height: 100vh;
+    background-color: beige;
+}
+
+.prImage {
+    position: relative;
+    font-size: 750%;
+    text-decoration: beige;
+    color: black
+}
+
+.containerInput {
+    display: grid;
+    height: 100vh;
+    
+    justify-content: center;
+    align-items: center;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    grid-template-areas: 
+        ". inputLogin .";
+    background: beige;
+}
+
+.containerStatistics {
+    display: grid;
+    height: 100vh;
+    
+    justify-content: center;
+    align-items: flex-start;
+    grid-template-columns: 0.1fr 1fr 0.1fr;
+    grid-template-rows: 1fr;
+    grid-template-areas: 
+        ". liName .";
+    background: beige;
+}
+
+.liName {
+    grid-area: liName;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+    /* background:rgb(255, 255, 0); */
+    margin-top: 50px;
+}
+
+tr {
+    text-align: left;
+}
+
+th, td {
+    /* padding: 15px; */
+    height: 10vh;
+    text-align: center;
+    border: 1px solid;
+}
+
+table {
+    table-layout: fixed;
+    width: 100%;
+}
+
+tr:hover {background-color: lightgray;}
+
+#inputLogin {
+    grid-area: inputLogin;
+}
+
+.list {
+    display: grid;
+    /* align-items: baseline; */
+    justify-content: stretch;
+    margin-top: 15px;
+}
+
+img {
+    width: 80%;
+    height: auto;
+}
+
+#plist {
+    grid-area: plist;
+    background: beige;
+}
+
+#ref {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15em;
+    background: lightgray;
+    grid-area: ref;
+}
+
+#actual {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15em;
+    background: lightgray;
+    grid-area: actual;
+}
+
+#plus {
+    display: grid;
+    align-items: flex-end;
+    justify-content:center;
+    grid-area: plus;
+    background: beige;
+    margin-bottom: 20px;
+}
+
+#but {
+    display: grid;
+    align-items: center;
+    justify-content:center;
+    grid-area: but;
+    background: beige;
+    margin-bottom: 20px;
+}
+
+#minus {
+    display: grid;
+    align-items: flex-start;
+    justify-content:center;
+    grid-area: minus;
+    background: beige;
+    margin-bottom: 20px;
+}
+
+.rond {
+    border-radius:50%;
+    width:3rem;
+    height:3rem;
+    background: linear-gradient(#F16529, #E44D26);
+    box-shadow: 0px 3px 8px #aaa, inset 0px 2px 3px #fff;
+    border:none;
+    outline:none;
+    font: 18px Tahoma bold;
+    color: #ffffff;
+    text-shadow: 1px 1px 1px lighgrey;
+    text-align: center;
+    }
+
+.rectangle {
+    /* border-radius:50%; */
+    width:5rem;
+    height: 2.5rem;
+    background: linear-gradient(#F16529, #E44D26);
+    box-shadow: 0px 3px 8px #aaa, inset 0px 2px 3px #fff;
+    border:none;
+    outline:none;
+    font: 18px Tahoma bold;
+    color: #ffffff;
+    text-shadow: 1px 1px 1px lighgrey;
+    text-align: center;
+}
+
+#mes1 {
+    grid-area: mes1;
+}
+
+#mes2 {
+    grid-area: mes2;
+}
+
+#mes3 {
+    grid-area: mes3;
+}
+
+.exerciseList {
+    /* inline-size: 5rem; */
+    font-size: 1.75em;
+    font-weight: bold;
+    display: inline-block;
+    width: 3rem;
+}
+
+.activeItem {
+    background: yellow;
+    /* color: red; */
+}
+
+.line {
+    display: grid;
+    padding-top: 50px;
+    height: 100vh;
+    background: beige;
+}
+
+@media only screen and (max-width:480px) {
+    .nav-links {
+        /* width: 50%; */
+        display: grid;
+        /* justify-content: space-around; */
+        text-align: left;
+        align-items: center;
+        justify-content: end;
+        list-style: none;
+    }
+
+    .containerTraining{
+        display: grid;
+        height: 100vh; 
+        grid-template-columns: 1fr 0.25fr 1fr;
+        grid-template-rows: 0.25fr 0.25fr 1fr 0.37fr;
+        grid-template-areas: 
+            "level level level"
+            "plist plist plist"
+            "actual actual actual"
+            "minus but plus";
+
+        grid-gap: 0.2rem;
+        background: beige;
+    }
+
+    .containerInput {
+        display: grid;
+        height: 100vh;
+        
+        justify-content: center;
+        align-items: center;
+        grid-template-columns: 0.2fr 1fr 0.2fr;
+        grid-template-rows: 1fr;
+        grid-template-areas: 
+            ". inputLogin .";
+        background: beige;
+    }
+
+    #level {
+        display: grid;
+        justify-content: center;
+        align-items: center;
+        text-align: left;
+        grid-area: level;
+        background: beige;
+    }
+
+    #plist {
+        display: grid;
+        justify-content: center;
+        align-items: center;
+        grid-area: plist;
+        background: beige;
+    }
+
+    #ref {
+        display: none;
+        font-size: 5em;
+        background: silver;
+        grid-area: ref;
+    }
+  
+    #actual {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 8em;
+        background: silver;
+        grid-area: actual;
+    }
+
+    #mes1 {
+        display: none;
+        grid-area: mes1;
+    }
+    
+    #mes2 {
+        display: none;
+        grid-area: mes2;
+    }
+    
+    #mes3 {
+        display: none;
+        grid-area: mes3;
+    }
+
+    img {
+        width: 80%;
+        height: auto;
+    }
+
+    .exerciseList {
+        /* inline-size: 5rem; */
+        font-size: 1.5em;
+        font-weight: bold;
+        display: inline-block;
+        width: 2rem;
+    }
+ 
+    #plus {
+        align-items: center;
+        justify-content:center;
+    }
+    
+    
+    #minus {
+        align-items: center;
+        justify-content:center;
+    }
 }

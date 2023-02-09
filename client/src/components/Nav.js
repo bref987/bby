@@ -3,7 +3,7 @@ import '../App.css';
 import { Link } from 'react-router-dom';
 
 
-function Nav() {
+function Nav({ setAuth }) {
     const navStyle = {
         color: 'black',
         textDecoration: 'none'
@@ -12,22 +12,25 @@ function Nav() {
     return (
         <nav>
             <Link className='logo' to={'/'}>
-                <h3>B-BY</h3>
+                <h3>BYsport</h3>
             </Link>
+
             <ul className='nav-links'>
                 <Link style={navStyle} to={'/'}>
                     <li>Home</li>
                 </Link>
                 <Link style={navStyle} to={'/program'}>
-                    <li>Program</li>
+                    <li>Trainings</li>
                 </Link>
-                <Link style={navStyle} to={'/register'}>
+                <Link style={navStyle} to={'/statistics'}>
+                    <li>Statistics</li>
+                </Link>
+                {/* <Link style={navStyle} to={'/register'}>
                     <li>Register</li>
-                </Link>
+                </Link> */}
                 <Link style={navStyle} to={'/login'}>
-                    <li>Login</li>
-                </Link>    
-                
+                    <li>{!setAuth ? 'Login' : 'Logout'}</li>
+                </Link>
             </ul>
         </nav>
     );

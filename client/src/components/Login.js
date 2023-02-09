@@ -2,7 +2,7 @@ import React, { Fragment, useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../App.css'
 
-const Login = ({ setAuth }) => {
+function Login ({ setAuth }) {
   const [inputs, setInputs] = useState({
     email: '',
     password: ''
@@ -17,9 +17,7 @@ const Login = ({ setAuth }) => {
     e.preventDefault();
     try {
         const body = { name, password };
-        const response = await fetch(
-            'http://localhost:5000/authentication/login',
-            {
+        const response = await fetch('http://localhost:5000/authentication/login', {
             method: 'POST',
             headers: {'Content-type': 'application/json'},
             body: JSON.stringify(body)
@@ -40,29 +38,34 @@ const Login = ({ setAuth }) => {
   };
 
   return (
-    <Fragment>
-        <h1 className='mt-5 text-center'>Login</h1>
-        <form onSubmit={onSubmitForm}>
-            <input
-            type='text'
-            name='name'
-            value={name}
-            placeholder='name'
-            onChange={e => onChange(e)}
-            className='form-control my-3'
-            />
-            <input 
-            type='password'
-            name='password'
-            value={password}
-            placeholder='password'
-            onChange={e => onChange(e)}
-            className='form-control my-3'
-            />
-            <button className='btn btn-success btn-block'>Submit</button>
-        </form>
-        <Link to='/register'>register</Link>
-    </Fragment>
+    <div className='containerInput'>
+
+        <div id='inputLogin'>
+            
+            <h1>Login</h1>
+            <form onSubmit={onSubmitForm}>
+                <input
+                    type='text'
+                    name='name'
+                    value={name || ''}
+                    placeholder='name'
+                    onChange={e => onChange(e)}
+                    className='form-control my-3'
+                />
+                <input 
+                    type='password'
+                    name='password'
+                    value={password || ''}
+                    placeholder='password'
+                    onChange={e => onChange(e)}
+                    className='form-control my-3'
+                />
+                <button className='rectangle'>Submit</button>
+            </form>
+            <Link to='/register'>register</Link>
+        </div>
+        
+    </div>
   );
 };
 

@@ -1,4 +1,4 @@
-# BBY Sport Application
+# BySport Application
 
 Client-Server side
 
