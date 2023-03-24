@@ -106,7 +106,6 @@ function Training ({ setTrainingEnd }) {
                         </li>
                     ))}
                 </ul>  
-                
             </div>
 
             <div id='level' className='list'>
@@ -124,11 +123,11 @@ function Training ({ setTrainingEnd }) {
                     .forEach((el, index) => document.getElementById(`prog${index}`).classList.add('activeItem'))} */}
 
             <div id="ref">
-                {!isFinished ? <span>{isStarted && training}</span> : <img src="./../muscleLeft.png" />}
+                {!isFinished ? <span>{isStarted && training}</span> : <img src="./../muscleLeft.png" alt="congrats"/>}
             </div>
 
             <div id="actual">
-                {!isFinished ? <span>{isStarted && count}</span> : <img src="./../muscleRight.png" />}
+                {!isFinished ? <span>{isStarted && count}</span> : <img src="./../muscleRight.png" alt="congrats"/>}
             </div>
 
             <div id="but">

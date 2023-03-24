@@ -40,7 +40,7 @@ nav {
     grid-template-columns: 1fr 0.2fr 1fr;
     grid-template-rows: 0.2fr 1fr 1fr 1fr 0.3fr;
     grid-template-areas: 
-        "plist . level"
+        "plist timer level"
         "ref plus actual"
         "ref but actual"
         "ref minus actual"

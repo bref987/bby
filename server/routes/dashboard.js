@@ -1,16 +1,16 @@
-const router = require("express").Router();
-const authorize = require("../middleware/authorize");
-const pool = require("../db");
+const router = require('express').Router();
+const authorize = require('../middleware/authorize');
+const pool = require('../db');
 
 
-router.get("/", authorize, async (req, res) => {
+router.get('/', authorize, async (req, res) => {
   try {
     const user = await pool.query('SELECT name FROM users WHERE userId = $1', [req.user.id]);
 
     res.json(user.rows[0]);
     } catch (err) {
         console.error(err.message);
-        res.status(500).send("Server error");
+        res.status(500).send('Server error');
     }
 });
 
@@ -18,7 +18,7 @@ router.post('/addtraining/:tid', authorize, async (req, res) => {
     try {
         const {tid} = req.params;
         const {session} = req.body;
-        // pay attention to 'returning *' - should put it in request
+        // pay attention to 'returning *' - have to put it in request
         const newTrining = await pool.query('insert into train (sportsman, exercise, session) values ($1, $2, $3) returning *', [req.user.id, tid, session]);
 
         res.json(newTrining.rows);
@@ -78,6 +78,5 @@ router.get('/statistics/:id', authorize, async(req, res) => {
         res.status(500).send('Server error');
     }
 })
-
 
 module.exports = router;
