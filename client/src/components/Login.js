@@ -60,7 +60,7 @@ function Login ({ setAuth }) {
                     onChange={e => onChange(e)}
                     className='form-control my-3'
                 />
-                <button className='rectangle'>Submit</button>
+                <button>submit</button>
             </form>
             <Link to='/register'>register</Link>
         </div>

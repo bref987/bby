@@ -48,8 +48,7 @@ function LineChart() {
     return (
         <div className="line">
             <Line data={userData} />
-        </div>
-        
+        </div>  
     )
        
 }

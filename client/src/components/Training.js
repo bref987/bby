@@ -8,36 +8,14 @@ function Training ({ setTrainingEnd }) {
     const [exercise, setExercise] = useState([]);
     const [currentLevel, setCurrentLevel] = useState();
     const [totalLevel, setTotalLevel] = useState();
+    const [seconds, setSeconds] = useState(120);
     const [session, setSession] = useState([]);
     const [isStarted, setIsStarted] = useState(false);
     const [isFinished, setIsFinished] = useState(false);
     let [exerciseRef, setExerciseRef] = useState(0);
     let [count, setCount] = useState(0);
     let [training, setTraining] = useState(0);
-     
-    function getTraining() {
 
-        if (exerciseRef < exercise.length) {
-            setTraining(exercise[exerciseRef]);
-            setCount(exercise[exerciseRef]);
-
-            exerciseRef += 1;
-            setExerciseRef(exerciseRef);
-        } else {
-            setTraining(exercise[exercise.length - 1]);
-            setCount(exercise[exercise.length - 1]);
-
-            setIsFinished(true);
-        }
-        
-        if (isStarted && session.length < exercise.length) {
-            session.push(count);
-            setSession(session);
-        }
-
-        setIsStarted(true);
-    }
-    
     function incrementCount() { 
         count = count + 1;
         setCount(count);
@@ -46,6 +24,36 @@ function Training ({ setTrainingEnd }) {
         count = count - 1;
         count = count < 0 ? 0 : count;
         setCount(count);
+    }
+
+    function getTraining() {
+        if (exerciseRef < exercise.length) {
+            setTraining(exercise[exerciseRef]);
+            setCount(exercise[exerciseRef]);
+    
+            exerciseRef += 1;
+            setExerciseRef(exerciseRef);
+        } else {
+            setTraining(exercise[exercise.length - 1]);
+            setCount(exercise[exercise.length - 1]);
+
+            setIsFinished(true);
+        }
+    
+        setSeconds(120);
+
+        if (!isStarted) {
+            setIsStarted(true);
+            const interval = setInterval(() => {
+                setSeconds(seconds => seconds - 1);
+            }, 1000);
+            return () => clearInterval(interval);
+        }
+    
+        if (session.length < exercise.length) {
+            session.push(count);
+            setSession(session);
+        }
     }
 
     const getExercise = async () => {
@@ -108,8 +116,17 @@ function Training ({ setTrainingEnd }) {
                 </ul>  
             </div>
 
+            <div id='timer'>
+            {
+                seconds <= 0 ? 
+                (<div style={{animation: 'blink 1s infinite'}}>Hurry up! Time's up! </div>) : 
+                isFinished ? (<div>Great job! Finish him!</div>) : 
+                (<div>{seconds} seconds to do exercise</div>)
+            }
+            </div>
+
             <div id='level' className='list'>
-                <h4>Level {currentLevel} from {totalLevel}</h4>
+                <h4>level {currentLevel} from {totalLevel}</h4>
             </div>
 
             {isStarted && document.getElementById(`prog${exerciseRef - 1}`).classList.add('activeItem')}
