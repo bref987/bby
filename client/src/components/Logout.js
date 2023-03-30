@@ -35,7 +35,7 @@ function Logout({ setAuth }) {
         <div className='containerInput'>
             <div id='inputLogin'>
                 <h1>{name}</h1>
-                <button className='rectangle' onClick={e => logout(e)}>Logout</button>
+                <button onClick={e => logout(e)}>logout</button>
             </div>
         </div>
     );

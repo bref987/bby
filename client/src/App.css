@@ -40,7 +40,7 @@ nav {
     grid-template-columns: 1fr 0.2fr 1fr;
     grid-template-rows: 0.2fr 1fr 1fr 1fr 0.3fr;
     grid-template-areas: 
-        "plist . level"
+        "plist timer level"
         "ref plus actual"
         "ref but actual"
         "ref minus actual"
@@ -48,6 +48,18 @@ nav {
     grid-gap: 0.2rem;
     background: beige;
  
+}
+
+#timer {
+    margin:auto;
+    
+    background-color: orange;
+}
+
+.App {
+    background-size: auto 100%;
+    background-image: url('../../client/public/bgrnd.jpg');
+    height: 100vh;
 }
 
 #level {
@@ -62,8 +74,11 @@ nav {
 }
 
 .prImage {
+    width: 100%;
+    height: 95%;
     position: relative;
-    font-size: 750%;
+    font-size: 500%;
+    font-family: 'Athletic';
     text-decoration: beige;
     color: black
 }
@@ -71,14 +86,15 @@ nav {
 .containerInput {
     display: grid;
     height: 100vh;
-    
     justify-content: center;
     align-items: center;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr;
     grid-template-areas: 
         ". inputLogin .";
-    background: beige;
+    background-image: url('../../client/public/bgrnd.jpg');
+    background-size: auto 100%;
+    color:rgb(255, 255, 0);
 }
 
 .containerStatistics {
@@ -91,7 +107,7 @@ nav {
     grid-template-rows: 1fr;
     grid-template-areas: 
         ". liName .";
-    background: beige;
+    background-color: beige;
 }
 
 .liName {
@@ -123,6 +139,7 @@ tr:hover {background-color: lightgray;}
 
 #inputLogin {
     grid-area: inputLogin;
+    font-size: 150%;
 }
 
 .list {
@@ -240,6 +257,18 @@ img {
     /* color: red; */
 }
 
+@keyframes blink {
+    0% {
+      background-color: red;
+    }
+    50% {
+      background-color: orange;
+    }
+    100% {
+      background-color: red;
+    }
+}
+
 .line {
     display: grid;
     padding-top: 50px;
@@ -249,9 +278,7 @@ img {
 
 @media only screen and (max-width:480px) {
     .nav-links {
-        /* width: 50%; */
         display: grid;
-        /* justify-content: space-around; */
         text-align: left;
         align-items: center;
         justify-content: end;
@@ -265,7 +292,7 @@ img {
         grid-template-rows: 0.25fr 0.25fr 1fr 0.37fr;
         grid-template-areas: 
             "level level level"
-            "plist plist plist"
+            "plist plist timer"
             "actual actual actual"
             "minus but plus";
 
@@ -283,7 +310,8 @@ img {
         grid-template-rows: 1fr;
         grid-template-areas: 
             ". inputLogin .";
-        background: beige;
+        background-image: url('../../client/public/bgrnd.jpg');
+        background-size: auto 100%;
     }
 
     #level {

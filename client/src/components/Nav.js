@@ -3,7 +3,7 @@ import '../App.css';
 import { Link } from 'react-router-dom';
 
 
-function Nav({ setAuth }) {
+function Nav({ setAuth, isAuthenticated }) {
     const navStyle = {
         color: 'black',
         textDecoration: 'none'
@@ -29,7 +29,7 @@ function Nav({ setAuth }) {
                     <li>Register</li>
                 </Link> */}
                 <Link style={navStyle} to={'/login'}>
-                    <li>{!setAuth ? 'Login' : 'Logout'}</li>
+                    <li>Profile</li>
                 </Link>
             </ul>
         </nav>

@@ -66,7 +66,7 @@ function Register({ setAuth }) {
                     onChange={e => onChange(e)}
                     className='form-control my-3'
                 />
-                <button className='rectangle'>Submit</button>
+                <button>submit</button>
             </form>
             <Link to='/login'>login</Link>
         </div>

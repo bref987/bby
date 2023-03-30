@@ -28,10 +28,10 @@ function Program() {
     <div className='containerProgramme'>
         {exercises.map(exercise => (
             <Link to={`/program/${exercise.exerciseid}`}>
-                <div className="prImage" key={exercise.exerciseid}>
+                <button className="prImage" key={exercise.exerciseid}>
                     {exercise.name}
                     {/* {<img src={`./../${exercise.exerciseid}.png`} />} */}
-                </div>
+                </button>
                 
             </Link>
         ))}
